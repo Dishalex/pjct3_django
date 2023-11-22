@@ -20,6 +20,8 @@
                 <a class="nav-link" href="{% url 'app_instagram:root' %}">Home</a>
                 </li>
 
+            {% if user.is_authenticated %}
+
                 <li class="nav-item">
                 <a class="nav-link" href="{% url 'app_instagram:pictures' %}">Pictures</a>
                 </li>
@@ -27,15 +29,23 @@
                 <li class="nav-item">
                 <a class="nav-link" href="{% url 'app_instagram:upload' %}">Upload</a>
                 </li>
-                
+
                 <li class="nav-item">
-                <a class="nav-link" href="#">SignIn</a>
+                <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+                </li>
+
+            {% else %}
+
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:login' %}">SignIn</a>
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link" href="#">SignUp</a>
+                <a class="nav-link" href="{% url 'users:register' %}">SignUp</a>
                 </li>
 
+            {% endif %}
+            
                 </ul>
               </div>
             </div>
